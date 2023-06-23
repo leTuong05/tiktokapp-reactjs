@@ -1,0 +1,46 @@
+import React from 'react'
+import classNames from 'classnames/bind'
+import styles from './Button.module.scss'
+import { Link } from 'react-router-dom'
+
+const cx = classNames.bind(styles)
+
+let Component = 'button'
+// passProps: Các props có thể thêm như target...
+
+const Button = ({ to, href, rounded, text, disable, onClick, primary, outline, small, medium, large, children,className, ...passProps }) => {
+    const props = {
+        onClick,
+        ...passProps
+    }
+
+
+    if (to) {
+        props.to = to
+        Component = Link
+    } else if (href) {
+        props.href = href
+        Component = 'a'
+    }
+    const classes = cx('wrapper', {
+        [className]:className, // khi có className ở đâu đó thì sẽ lấy custom ở đó truyển vào
+        primary,
+        outline,
+        small,
+        medium,
+        large,
+        text,
+        disable, rounded
+    })
+
+    if (disable) {
+        delete props.onClick;
+    }
+    return (
+        <Component className={classes} {...props}>
+            <span>{children}</span>
+        </Component>
+    )
+}
+
+export default Button
