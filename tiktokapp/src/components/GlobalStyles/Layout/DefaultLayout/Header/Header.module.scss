@@ -1,6 +1,7 @@
 .wrapper {
     display: flex;
-
+    padding-left: 16px;
+    padding-right: 24px;
     align-items: center;
     height: 60px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
@@ -86,3 +87,12 @@
     font-size: 16px;
     padding: 5px 12px;
 }
+
+.more-btn {
+    font-size: 20px;
+    margin-left: 20px;
+    background: transparent;
+    padding: 8px;
+    cursor: pointer;
+}
+

@@ -5,6 +5,8 @@
     //đặt biến ở đây
     --primary: #fe2c55;
     --black: #000;
+    --text-color: #161823;
+    --white: #fff;
 }
 
 html {}
@@ -13,12 +15,17 @@ html {}
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    
 }
 
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    color: var(--text-color);
+    overflow-y: overlay;
+    font-size: 16px;
 }
 
 input,

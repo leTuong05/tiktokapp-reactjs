@@ -8,7 +8,24 @@ const cx = classNames.bind(styles)
 let Component = 'button'
 // passProps: Các props có thể thêm như target...
 
-const Button = ({ to, href, rounded, text, disable, onClick, primary, outline, small, medium, large, children,className, ...passProps }) => {
+const Button = ({
+    to,
+    href,
+    leftIcon,
+    rightIcon,
+    rounded,
+    text,
+    disable,
+    onClick,
+    primary,
+    outline,
+    small,
+    medium,
+    large,
+    children,
+    className,
+    ...passProps
+}) => {
     const props = {
         onClick,
         ...passProps
@@ -23,7 +40,7 @@ const Button = ({ to, href, rounded, text, disable, onClick, primary, outline, s
         Component = 'a'
     }
     const classes = cx('wrapper', {
-        [className]:className, // khi có className ở đâu đó thì sẽ lấy custom ở đó truyển vào
+        [className]: className, // khi có className ở đâu đó thì sẽ lấy custom ở đó truyển vào
         primary,
         outline,
         small,
@@ -38,7 +55,9 @@ const Button = ({ to, href, rounded, text, disable, onClick, primary, outline, s
     }
     return (
         <Component className={classes} {...props}>
-            <span>{children}</span>
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            <span className={cx('title')}>{children}</span>
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Component>
     )
 }
