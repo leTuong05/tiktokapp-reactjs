@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import classNames from "classnames/bind";
 import styles from './Header.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical, faEarthAfrica, faCircleQuestion, faKeyboard } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical, faEarthAfrica, faCircleQuestion, faKeyboard, faCloudUpload, faUser, faQuestion, faGear, faCoins, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 
 import 'tippy.js/dist/tippy.css'; // optional
@@ -17,8 +17,22 @@ const cx = classNames.bind(styles)
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAfrica} />,
-        title: 'Vietnamese'
-
+        title: 'Vietnamese',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                }
+            ]
+        }
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -34,7 +48,7 @@ const MENU_ITEMS = [
     },
 ]
 const Header = () => {
-    console.log(cx('wrapper'));
+
     const [resultSearch, setResultSearch] = useState([]);
 
     useEffect(() => {
@@ -43,6 +57,39 @@ const Header = () => {
         }, 3000)
     })
 
+    const handlMenuChange = (menuItem) => {
+        console.log(menuItem);
+    }
+
+    const currentUser = true
+
+    const userMenu = [
+        {
+            icon: <FontAwesomeIcon icon={faUser} />,
+            title: 'View Profile',
+            to: '/feedback'
+
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCoins} />,
+            title: 'Get Coins',
+            to: '/coin'
+
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Setting',
+            to: '/setting'
+
+        },
+        ...MENU_ITEMS,
+        {
+            icon: <FontAwesomeIcon icon={faSignOut} />,
+            title: 'Logout',
+            to: '/logout',
+            separate: true
+        },
+    ]
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -92,20 +139,43 @@ const Header = () => {
                     </div>
                 </Tippy>
                 {/* action */}
-                <div>
-                    <Button text>Upload</Button>
-                    <Button primary >Login</Button>
+                <div className={cx('actions')}>
+                    {currentUser ?
+                        (
+                            <>
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                </button>
+                            </>
+                        )
+                        : (
+                            <>
+                                <Button text>Upload</Button>
+                                <Button primary >Login</Button>
 
+
+                            </>
+                        )}
                     <Menu
-                        items={MENU_ITEMS}
+                        items={currentUser ? userMenu : MENU_ITEMS}
+                        onChange={handlMenuChange}
                     >
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src='https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/c31c83118ae405994c36ab1b85ed97ff~c5_100x100.jpeg?x-expires=1687752000&x-signature=vv1bFoL5BEFMK3nGVPZkFm5KYtU%3D' className={cx('user-avatar')} alt='Nguyen Van A' />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
+
                     </Menu>
                 </div>
-            </div>
-        </header>
+
+
+            </div >
+        </header >
     )
 }
 
