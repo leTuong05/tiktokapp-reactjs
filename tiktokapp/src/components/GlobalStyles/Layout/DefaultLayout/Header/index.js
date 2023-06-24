@@ -10,6 +10,7 @@ import Tippy from '@tippyjs/react/headless';
 import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
+import Image from '../../../Image';
 
 
 const cx = classNames.bind(styles)
@@ -161,9 +162,12 @@ const Header = () => {
                         onChange={handlMenuChange}
                     >
                         {currentUser ? (
-                            <img
+
+                            <Image
                                 className={cx('user-avatar')}
-                                src='https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/c31c83118ae405994c36ab1b85ed97ff~c5_100x100.jpeg?x-expires=1687752000&x-signature=vv1bFoL5BEFMK3nGVPZkFm5KYtU%3D' className={cx('user-avatar')} alt='Nguyen Van A' />
+                                src='https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/c31c83118ae405994c36ab1b85ed97ff~c5_100x100.jpeg?x-expires=1687752000&x-signature=vv1bFoL5BEFMK3nGVPZkFm5KYtU%3D'
+                                alt='Nguyen Van A' />
+
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
