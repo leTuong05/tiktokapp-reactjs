@@ -11,6 +11,7 @@ import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import Image from '../../../Image';
+import Search from '../../Search';
 
 
 const cx = classNames.bind(styles)
@@ -50,13 +51,7 @@ const MENU_ITEMS = [
 ]
 const Header = () => {
 
-    const [resultSearch, setResultSearch] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setResultSearch([])
-        }, 3000)
-    })
+    
 
     const handlMenuChange = (menuItem) => {
         console.log(menuItem);
@@ -109,36 +104,7 @@ const Header = () => {
                 </div>
                 {/* search */}
                 {/* typpy headless */}
-                <Tippy
-                    interactive
-                    visible={resultSearch.length > 0}
-                    render={attrs => (
-
-                        <div className={cx('search-result')} tabIndex='-1' {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>
-                                    Account
-                                </h4>
-
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder='Tìm kiếm' />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </Tippy>
+                <Search />
                 {/* action */}
                 <div className={cx('actions')}>
                     {currentUser ?
