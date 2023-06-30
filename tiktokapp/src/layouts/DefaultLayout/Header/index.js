@@ -3,15 +3,16 @@ import classNames from "classnames/bind";
 import styles from './Header.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical, faEarthAfrica, faCircleQuestion, faKeyboard, faCloudUpload, faUser, faQuestion, faGear, faCoins, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as PopperWrapper } from '../../../Popper';
+
 
 import 'tippy.js/dist/tippy.css'; // optional
 import Tippy from '@tippyjs/react/headless';
-import AccountItem from '../../../AccountItem';
-import Button from '../../../Button';
-import Menu from '../../../Popper/Menu';
-import Image from '../../../Image';
+
+import Button from '../../../components/GlobalStyles/Button';
+import Menu from '../../../components/GlobalStyles/Popper/Menu';
+import Image from '../../../components/GlobalStyles/Image';
 import Search from '../../Search';
+import { Link } from 'react-router-dom';
 
 
 const cx = classNames.bind(styles)
@@ -32,7 +33,107 @@ const MENU_ITEMS = [
                     type: 'language',
                     code: 'en',
                     title: 'English'
-                }
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
             ]
         }
     },
@@ -51,7 +152,7 @@ const MENU_ITEMS = [
 ]
 const Header = () => {
 
-    
+
 
     const handlMenuChange = (menuItem) => {
         console.log(menuItem);
@@ -90,7 +191,7 @@ const Header = () => {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 {/* logo */}
-                <div className={cx('logo')}>
+                <Link to={'/'}><div className={cx('logo')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="118" height="42" fill="currentColor" alt="TikTok">
                         <path fill="#25F4EE" d="M9.875 16.842v-1.119A8.836 8.836 0 0 0 8.7 15.64c-4.797-.006-8.7 3.9-8.7 8.707a8.706 8.706 0 0 0 3.718 7.135A8.675 8.675 0 0 1 1.38 25.55c0-4.737 3.794-8.598 8.495-8.707Z"></path>
                         <path fill="#25F4EE" d="M10.086 29.526c2.14 0 3.89-1.707 3.967-3.83l.006-18.968h3.463a6.78 6.78 0 0 1-.11-1.202h-4.726l-.006 18.969a3.978 3.978 0 0 1-3.967 3.829 3.93 3.93 0 0 1-1.846-.46 3.949 3.949 0 0 0 3.22 1.662Zm13.906-16.36v-1.055a6.506 6.506 0 0 1-3.583-1.068 6.571 6.571 0 0 0 3.583 2.123Z"></path>
@@ -101,7 +202,7 @@ const Header = () => {
                         <path fill="#FE2C55" d="M92.858 16.83c-.217 0-.505.012-.716.025a8.111 8.111 0 0 1 7.468 8.087 8.112 8.112 0 0 1-7.468 8.087c.211.02.499.026.716.026 4.478 0 8.106-3.631 8.106-8.113 0-4.482-3.628-8.113-8.106-8.113Z"></path>
                         <path fill="black" d="M91.58 28.887a3.94 3.94 0 0 1-3.94-3.945 3.94 3.94 0 1 1 7.882 0c0 2.18-1.77 3.945-3.942 3.945Zm0-12.058c-4.477 0-8.106 3.631-8.106 8.113 0 4.482 3.629 8.113 8.106 8.113 4.478 0 8.106-3.631 8.106-8.113 0-4.482-3.628-8.113-8.106-8.113Z"></path>
                     </svg>
-                </div>
+                </div></Link>
                 {/* search */}
                 {/* typpy headless */}
                 <Search />

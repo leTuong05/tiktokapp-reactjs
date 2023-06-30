@@ -4,6 +4,7 @@ import styles from './AccountItem.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const cx = classNames.bind(styles)
 const AccountItem = ({ data }) => {
@@ -15,7 +16,7 @@ const AccountItem = ({ data }) => {
                 <p className={cx('name')}>
                     <span>{data.full_name}</span>
                     {data.tick && (<FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />)}
-                    
+
                 </p>
                 <span className={cx('username')}>{data.nickname}</span>
             </div>
@@ -23,4 +24,7 @@ const AccountItem = ({ data }) => {
     )
 }
 
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+}
 export default AccountItem

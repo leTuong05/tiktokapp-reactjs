@@ -22,6 +22,7 @@
         color: #000;
     }
 }
+
 .clear,
 .loading {
     position: absolute;
@@ -37,6 +38,7 @@
     font-size: 16px;
     padding: 5px 12px;
 }
+
 .search {
     position: relative;
 
@@ -56,6 +58,7 @@
         background: transparent;
         outline: none;
         caret-color: red;
+        padding-right: 40px;
     }
 
     input:not(:placeholder-shown)~.search-btn {
@@ -67,14 +70,17 @@
         border-color: rgba(22, 24, 35, .2);
     }
 }
+
 .loading {
-animation: spinner 1s linear infinite ;
+    animation: spinner 1s linear infinite;
 }
+
 @keyframes spinner {
-    from{
+    from {
         transform: translateY(-50%) rotate(0);
     }
-    to{
-        transform:translateY(-50%) rotate(360deg);
+
+    to {
+        transform: translateY(-50%) rotate(360deg);
     }
 }

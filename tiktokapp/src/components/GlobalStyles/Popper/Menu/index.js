@@ -32,7 +32,7 @@ const Menu = ({ children, items = [], onChange = defaultFn }) => {
     }
     return (
         <Tippy
-            
+visible
             interactive
             delay={[0, 500]}
             placement='bottom-end'
@@ -47,7 +47,7 @@ const Menu = ({ children, items = [], onChange = defaultFn }) => {
                             onBack={() => {
                                 setHistory(prev => prev.slice(0, prev.length - 1))
                             }} />}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
 

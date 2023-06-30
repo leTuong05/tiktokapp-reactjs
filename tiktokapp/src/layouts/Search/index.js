@@ -4,13 +4,13 @@ import classNames from "classnames/bind";
 import styles from './Search.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical, faEarthAfrica, faCircleQuestion, faKeyboard, faCloudUpload, faUser, faQuestion, faGear, faCoins, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as PopperWrapper } from '../../Popper';
+import { Wrapper as PopperWrapper } from '../../components/GlobalStyles/Popper';
 
-import request from '../../../../utils/request';
+import request from '../../utils/request';
 import 'tippy.js/dist/tippy.css'; // optional
 import Tippy from '@tippyjs/react/headless';
-import AccountItem from '../../AccountItem';
-import useDebounce from '../../../hooks/useDebounce';
+import AccountItem from '../../components/GlobalStyles/AccountItem';
+import useDebounce from '../../components/hooks/useDebounce';
 
 const cx = classNames.bind(styles)
 
@@ -57,6 +57,15 @@ const Search = () => {
     const handleHideResult = () => {
         setShowResult(false)
     }
+
+    const handleChange = (e) => {
+        const searchInput = e.target.value
+        if (!searchInput.startsWith(' ') || searchInput.trim()) {
+            setSearchValue(searchInput)
+        }
+
+        setSearchValue(e.target.value)
+    }
     return (
         <Tippy
             interactive
@@ -84,7 +93,7 @@ const Search = () => {
                     ref={refInput}
                     value={searchValue}
                     placeholder='Tìm kiếm'
-                    onChange={e => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
 
